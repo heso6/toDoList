@@ -22,9 +22,7 @@ import butterknife.ButterKnife;
 public class TodoitemAdapter extends RecyclerView.Adapter<TodoitemAdapter.TodoViewHolder> {
     private List<ToDoTask> mData = Collections.emptyList();
 
-
     public void setData(List<ToDoTask> data) {
-
         mData = data;
         notifyDataSetChanged();
     }

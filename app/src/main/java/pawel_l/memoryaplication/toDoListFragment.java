@@ -32,7 +32,10 @@ public class toDoListFragment extends Fragment {
 
         mToDoList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        TodoItemsRepository itemsRepository = new SqlTodoItemsRepository(getContext());
+
         mAdapter = new TodoitemAdapter();
+        mAdapter.setData(itemsRepository.getToDoList());
         mToDoList.setAdapter(mAdapter);
 
         return view;

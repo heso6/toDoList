@@ -1,17 +1,27 @@
 package pawel_l.memoryaplication;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.util.Date;
 
 /**
  * Created by gosc on 25.11.2016.
  */
 
+@DatabaseTable(tableName = "task")
 public class ToDoTask {
+    @DatabaseField(generatedId = true)
     private int id;
+    @DatabaseField(canBeNull = false)
     private String title;
+    @DatabaseField
     private boolean priority;
+    @DatabaseField
     private String note;
+    @DatabaseField
     private boolean done;
+    @DatabaseField(canBeNull = false, format = "yyyy-MM-dd HH:mm:ss")
     private Date created;
 
 
