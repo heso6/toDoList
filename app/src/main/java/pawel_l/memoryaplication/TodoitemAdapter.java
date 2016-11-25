@@ -39,9 +39,9 @@ public class TodoitemAdapter extends RecyclerView.Adapter<TodoitemAdapter.TodoVi
         ToDoTask task = mData.get(position);
         // ustawienie paska priorytetu
         if (task.isPriority()) {
-            holder.mStripe.setBackgroundColor(Color.RED);
+            holder.itemView.setBackgroundColor(0x20FF0000);
         }else{
-            holder.mStripe.setBackgroundColor(Color.TRANSPARENT);
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
         }
         // Lub za pomoca operatora ( znajdujacego sie ponizej) warunkowego:
        // holder.mStripe.setBackgroundColor(task.isPriority() ? Color.RED : Color.TRANSPARENT);
