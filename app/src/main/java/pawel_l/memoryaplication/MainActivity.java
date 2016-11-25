@@ -10,15 +10,18 @@ public class MainActivity extends AppCompatActivity implements toDoListFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new toDoListFragment())
-                .commit();
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new toDoListFragment())
+                    .commit();
+        }
     }
 
     @Override
     public void onAddClick() {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new FormFragment())
+                .replace(R.id.container, new FormFragment())
                 .addToBackStack(null)
                 .commit();
 
