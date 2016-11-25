@@ -11,8 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="pawel_l.memoryaplication.MainActivity">
 
-    <fragment
-        class="pawel_l.memoryaplication.toDoListFragment"
+    <FrameLayout
+      android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>

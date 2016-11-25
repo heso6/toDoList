@@ -1,5 +1,6 @@
 package pawel_l.memoryaplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,11 +21,23 @@ import butterknife.ButterKnife;
  */
 
 public class toDoListFragment extends Fragment {
-
-    private TodoitemAdapter mAdapter;
-
     @BindView(R.id.todo_list)
     protected RecyclerView mToDoList;
+
+    private TodoitemAdapter mAdapter;
+    private TodoListMenuListener mMenuListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof  TodoListMenuListener) {
+            mMenuListener = (TodoListMenuListener) context;
+        }else{
+            throw new RuntimeException("Activity nie implementuje TodoMenuListener");
+        }
+    }
+
+
 
     @Nullable
     @Override
@@ -50,4 +64,20 @@ public class toDoListFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_list, menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_item_add){
+            mMenuListener.onAddClick();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public interface TodoListMenuListener {
+
+        void onAddClick();
+
+
+    }
+
 }
